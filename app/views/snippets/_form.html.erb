@@ -1,0 +1,18 @@
+<%= form_for (@snippet) do |f|%>
+	<% if @snippet.errors.any? %>
+	  <div id="errorExplanation">
+	    <h2><%= pluralize(@snippet.errors.count, "error") %> prohibited
+	        this snippet from being saved:</h2>
+	    <ul>
+	    <% @snippet.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+	<%= f.label :body, 'Create your snippet'%><br /><br />
+	<%= f.text_area :body,:placeholder=>"some text input ...",:rows=>5, :cols=>50 %><br /><br />
+	<%= f.check_box :status %>&nbsp; private? <br /><br />
+
+	<%= f.submit "create"%>
+<% end %>

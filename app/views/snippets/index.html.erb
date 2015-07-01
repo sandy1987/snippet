@@ -1,0 +1,32 @@
+<div style="width:70%;">
+	<span style="float:right;">
+		<%= form_tag(snippets_path, :method => "get", id: "search-form") do %>
+			<%= text_field_tag :search, params[:search], placeholder: "Search snippets" %>
+		<% end %>
+	</span>	
+</div>
+<br /><br /><br />
+<div style="width:70%;">
+	<span style="font-weight:bold;font-size:16px">Snippent</span>
+	<span style="float:right;">
+		<%= link_to "Create Snippet" , new_snippet_path %>
+	</span>
+</div>
+<br />
+
+<div style="width:70%;">
+	<table border="1">
+		<% @snipptes.each do |snippet|%>	
+			<tr>				
+				<td>
+				<% if snippet.status == false %>
+					<%= link_to snippet.body , snippet %>
+				<% else %>
+					<%= snippet.body %>
+				<% end %>
+				</td>
+			</tr>	
+		<% end %> 
+	</table>
+</div>
+<%= will_paginate @snipptes %>
